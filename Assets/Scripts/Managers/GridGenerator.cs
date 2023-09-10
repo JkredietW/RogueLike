@@ -9,7 +9,7 @@ namespace JK.Roguelike
         public static GridGenerator Instance { get; private set; }
 
         [SerializeField] private int totalTiles = 25;
-        [SerializeField] private GameObject TilePrefab;
+        [SerializeField] private LevelTile TilePrefab;
 
         private Vector2[] tileDirections =
         {
@@ -27,7 +27,7 @@ namespace JK.Roguelike
             for (int i = 0; i < totalTiles; i++)
             {
                 closed.Add(currentLocation);
-                Instantiate(TilePrefab, currentLocation, Quaternion.identity);
+                LevelTile newtile = Instantiate(TilePrefab, currentLocation, Quaternion.identity, transform);
 
                 for (int j = 0; j < tileDirections.Length; j++)
                     if (!closed.Contains(tileDirections[j] + currentLocation))
@@ -35,6 +35,8 @@ namespace JK.Roguelike
 
                 open.Remove(currentLocation);
                 currentLocation = open[Random.Range(0, open.Count - 1)];
+
+                newtile.Initialize(i == totalTiles);
             }
         }
     }
