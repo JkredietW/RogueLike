@@ -9,6 +9,8 @@ namespace JK.Roguelike
         public static GameManager Instance { get; private set; }
 
         [SerializeField] private GameObject playerPrefab;
+        [SerializeField] private GameDifficulty[] difficultyConfigs;
+        [SerializeField] private GameDifficulty selectedDifficulty;
 
         public GameObject SpawnedPlayer { get; private set; }
 
@@ -22,8 +24,9 @@ namespace JK.Roguelike
                 Destroy(gameObject);
         }
 
-        public void LoadNewGame(int nextScene = 1)
+        public void LoadNewGame(int nextScene = 1, int difficulty = 0)
         {
+            selectedDifficulty = difficultyConfigs[difficulty];
             if (nextScene == 1)
             {
                 SceneManager.LoadScene(nextScene);
@@ -50,6 +53,7 @@ namespace JK.Roguelike
                 yield return null;
 
             SpawnedPlayer = Instantiate(playerPrefab);
+            //SpawnedPlayer.GetComponent<PlayerStats>().UpdateStats();
             Spawner.Instance.StartSpawning();
         }
 

@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace JK.Roguelike
 {
-    [CreateAssetMenu(fileName = "Difficulty", menuName = "Game/Difficulty")]
-    public class GameDifficulties : MonoBehaviour
+    [CreateAssetMenu(fileName = "Config", menuName = "Game/Level config")]
+    public class LevelConfig : ScriptableObject
     {
-        public TileType Difficulty;
+        public TileType Mode;
+        public float RareSpawnChance;
         public List<Wave> waves;
     }
 
