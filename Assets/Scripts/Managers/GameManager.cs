@@ -10,7 +10,8 @@ namespace JK.Roguelike
 
         [SerializeField] private GameObject playerPrefab;
         [SerializeField] private GameDifficulty[] difficultyConfigs;
-        [SerializeField] private GameDifficulty selectedDifficulty;
+
+        public GameDifficulty SelectedDifficulty { get; private set; }
 
         public GameObject SpawnedPlayer { get; private set; }
 
@@ -26,7 +27,7 @@ namespace JK.Roguelike
 
         public void LoadNewGame(int nextScene = 1, int difficulty = 0)
         {
-            selectedDifficulty = difficultyConfigs[difficulty];
+            SelectedDifficulty = difficultyConfigs[difficulty];
             if (nextScene == 1)
             {
                 SceneManager.LoadScene(nextScene);

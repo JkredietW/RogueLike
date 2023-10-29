@@ -1992,8 +1992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4326256602732442444, guid: d06f14ffef2d9c142924191bb5c9066f, type: 3}
-  difficultyConfigs: []
-  selectedDifficulty: {fileID: 0}
+  difficultyConfigs:
+  - {fileID: 11400000, guid: afbd940887827f844b23d415e8a783f2, type: 2}
 --- !u!4 &1470472820
 Transform:
   m_ObjectHideFlags: 0
