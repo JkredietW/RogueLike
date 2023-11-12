@@ -11,6 +11,10 @@ namespace JK.Roguelike
         [SerializeField] private GameObject playerPrefab;
         [SerializeField] private GameDifficulty[] difficultyConfigs;
 
+        [SerializeField] private Transform projectileParent;
+
+        public Transform ProjectileParent => projectileParent;
+
         public GameDifficulty SelectedDifficulty { get; private set; }
 
         public GameObject SpawnedPlayer { get; private set; }
@@ -60,12 +64,19 @@ namespace JK.Roguelike
 
         public void RemovePlayer()
         {
+            RemoveProjectiles();
             Destroy(SpawnedPlayer);
         }
 
         public void ToggleLevelSelectUI(bool value = false)
         {
             GridGenerator.Instance.gameObject.SetActive(value);
+        }
+
+        public void RemoveProjectiles()
+        {
+            foreach (Transform projectile in projectileParent)
+                Destroy(projectile.gameObject);
         }
     }
 }

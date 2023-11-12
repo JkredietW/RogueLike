@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JK.Roguelike
@@ -32,7 +33,7 @@ namespace JK.Roguelike
                 float shootAngle = aimDirection - (projectileMaxSpread / 2) + (projectileMaxSpread / projectileCount) * i + (projectileMaxSpread / 2 / projectileCount);
                 Quaternion spreadRotation = Quaternion.Euler(new Vector3(0, 0, shootAngle));
 
-                Rigidbody2D spawnedProjectile = Instantiate(projectilePrefab, new Vector2(transform.position.x, transform.position.y), spreadRotation);
+                Rigidbody2D spawnedProjectile = Instantiate(projectilePrefab, new Vector2(transform.position.x, transform.position.y), spreadRotation, GameManager.Instance.ProjectileParent);
 
                 spawnedProjectile.velocity = spawnedProjectile.transform.up * projectileVelocity;
                 spawnedProjectile.GetComponent<Projectile>().Initialize(projectileDamage, hitType);

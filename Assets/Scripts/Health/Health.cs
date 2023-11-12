@@ -17,11 +17,13 @@ namespace JK.Roguelike
             if (currentHealth == 0)
                 return;
 
-                currentHealth = Mathf.Clamp(currentHealth - damageValue, 0, maxHealth);
+            currentHealth = Mathf.Clamp(currentHealth - damageValue, 0, maxHealth);
 
             if (currentHealth == 0)
                 Die();
         }
+
+        public void OneHit() => DoDamage(maxHealth);
 
         protected virtual void Die()
         {
