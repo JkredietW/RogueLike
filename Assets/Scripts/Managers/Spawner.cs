@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Unity.VisualScripting;
+using System.Linq;
 
 namespace JK.Roguelike
 {
@@ -14,6 +15,7 @@ namespace JK.Roguelike
 
         private int enemiesAlive;
         private int currentWave;
+        private int[] exlucedSpawnLocations = { -1, 0, 1 };
 
         private void Awake()
         {
@@ -53,9 +55,17 @@ namespace JK.Roguelike
 
         private Vector2 GetRandomSpawnLocation()
         {
-            // fix not spawning on player
+            List<Vector2> spawnLocations = new List<Vector2>();
+            for (int x = -10; x < 11; x++)
+            {
+                for (int y = -10; y < 11; y++)
+                {
+                    if (!exlucedSpawnLocations.Contains(x) || !exlucedSpawnLocations.Contains(y))
+                        spawnLocations.Add(new(x, y));
+                }
+            }
 
-            return new Vector2(UnityEngine.Random.Range(-10,10), UnityEngine.Random.Range(-10, 10));
+            return spawnLocations[UnityEngine.Random.Range(0, spawnLocations.Count - 1)];
         }
 
         public void EnemyDied()
