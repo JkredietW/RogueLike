@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyRigidbody: {fileID: 6457180238557769320}
   enemyAttack: {fileID: -1472918506040957318}
-  movementSpeed: 1000
+  movementSpeed: 300
   attackRange: 1
 --- !u!114 &-1472918506040957318
 MonoBehaviour:
@@ -203,7 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementClass: {fileID: 3691910310696378602}
+  spriteRenderer: {fileID: 1909340099260053455}
   attackDuration: 1
   explosionRange: 2
-  spriteRenderer: {fileID: 1909340099260053455}
+  explosionDamage: 1
   explosionPrefab: {fileID: 4599230627831845423, guid: f0563229e115b0d4aac24699325d1a9b, type: 3}
